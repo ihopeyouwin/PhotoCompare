@@ -4,10 +4,6 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  container: {
-    flexDirection: 'column',
-    flex: 1,
-  },
   imageLeft: {
     top: 0,
     left: 0,

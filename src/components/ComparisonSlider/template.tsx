@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Image, ImageSourcePropType, StyleSheet, Dimensions } from 'react-native';
+import React from 'react';
+import { View, Image, ImageSourcePropType, Dimensions } from 'react-native';
 import styles from './styles';
 import { ReactJsx } from '../../types';
 import Slider from '@react-native-community/slider';
@@ -9,18 +9,26 @@ type Props = {
   setSliderValue: React.Dispatch<React.SetStateAction<number>>;
   imageBeforeSrc: ImageSourcePropType;
   imageAfterSrc: ImageSourcePropType;
+  imageBefore: ImageSourcePropType;
+  imageAfter: ImageSourcePropType;
 };
 
 const template = (props: Props): ReactJsx => {
-  const { sliderValue, setSliderValue, imageBeforeSrc, imageAfterSrc } = props;
+  const { sliderValue, setSliderValue, imageBeforeSrc, imageAfterSrc, imageBefore, imageAfter } = props;
   const fullWidth = Dimensions.get('window').width;
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.imagesContainer}>
-        <Image style={[styles.imageLeft, { width: fullWidth }]} source={imageBeforeSrc} />
+        <Image
+          style={[styles.imageLeft, { width: fullWidth }]}
+          source={imageBefore ? { uri: imageBefore } : imageBeforeSrc}
+        />
         <View style={[styles.overlayContainer, { width: fullWidth * (1 - sliderValue) }]}>
-          <Image source={imageAfterSrc} style={[styles.imageRight, { width: fullWidth }]} />
+          <Image
+            source={imageAfter ? { uri: imageAfter } : imageAfterSrc}
+            style={[styles.imageRight, { width: fullWidth }]}
+          />
         </View>
       </View>
       <Slider

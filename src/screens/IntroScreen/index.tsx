@@ -2,14 +2,14 @@ import { ScrollView, Text } from 'react-native';
 import { ReactJsx } from '../../types';
 import styles from './styles';
 import React from 'react';
-import { translations } from '../../constants';
+import { ApplicationText } from '../../constants';
 
 const IntroScreen = (): ReactJsx => {
   const {
     greeting: { title, text, bullets },
-  } = translations;
+  } = ApplicationText;
   return (
-    <ScrollView style={styles.root} contentContainerStyle={styles.textContainer}>
+    <ScrollView style={styles.root} contentContainerStyle={styles.textContainer} showsVerticalScrollIndicator={false}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.text}>{text}</Text>
       <Text style={styles.bullets}>{bullets}</Text>

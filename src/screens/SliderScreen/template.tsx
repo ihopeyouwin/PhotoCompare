@@ -1,14 +1,24 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import styles from './styles';
 import { ReactJsx } from '../../types';
-import ComparisonSlider from '../../components/ComparisonSlider';
+import { firstImageActions, secondImageActions } from '../../constants';
 
-const template = (): ReactJsx => {
+import { ImagePicker, ComparisonSlider } from '../../components';
+
+const template = (props): ReactJsx => {
+  const { onButtonPress, imageBefore, imageAfter } = props;
+
   return (
-    <View style={styles.root}>
-      <ComparisonSlider />
-    </View>
+    <ScrollView
+      style={styles.root}
+      contentContainerStyle={styles.contentContainer}
+      showsVerticalScrollIndicator={false}
+    >
+      <ComparisonSlider imageBefore={imageBefore} imageAfter={imageAfter} />
+      <ImagePicker imageSrc={imageBefore} actions={firstImageActions} onPress={onButtonPress} />
+      <ImagePicker imageSrc={imageAfter} actions={secondImageActions} onPress={onButtonPress} />
+    </ScrollView>
   );
 };
 

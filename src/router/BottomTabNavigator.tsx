@@ -38,7 +38,7 @@ const BottomTabNavigator = (): ReactJsx => {
 const styles = StyleSheet.create({
   headerStyle: {
     borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    borderBottomColor: colors.borderCommon,
   },
 });
 
