@@ -21,6 +21,7 @@ const BottomTabNavigator = (): ReactJsx => {
         options={{
           title: 'Intro',
           headerStyle: styles.headerStyle,
+          headerTitleAlign: 'center',
         }}
       />
       <Tab.Screen
@@ -28,6 +29,7 @@ const BottomTabNavigator = (): ReactJsx => {
         options={{
           title: 'Slider',
           headerStyle: styles.headerStyle,
+          headerTitleAlign: 'center',
         }}
         component={SliderScreen}
       />

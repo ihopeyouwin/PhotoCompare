@@ -1,35 +1,34 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const fullWidth = Dimensions.get('window').width - 24;
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  imageLeft: {
-    top: 0,
-    left: 0,
-    height: 300,
-    resizeMode: 'contain',
-  },
-  imageRight: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    height: 300,
-    resizeMode: 'contain',
-  },
-  slider: {
-    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   imagesContainer: {
     position: 'relative',
-    height: 300,
+    width: fullWidth,
+    minHeight: 400,
+    marginHorizontal: 12,
   },
-  overlayContainer: {
+  image: {
     position: 'absolute',
-    top: 0,
-    right: 0,
-    height: 300,
-    overflow: 'hidden',
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
+  topImage: {
+    zIndex: 1,
+  },
+  bottomImage: {
+    zIndex: 0,
+  },
+  slider: {
+    width: '90%',
+    height: 40,
   },
 });
 export default styles;

@@ -10,7 +10,10 @@ const SliderScreen = () => {
     const setter = imageType === 'before' ? setImageBefore : setImageAfter;
     const imagePicker = actionType === 'capture' ? launchCamera : launchImageLibrary;
     imagePicker(options).then((res) => {
-      setter(res.assets[0].uri);
+      res && setter(res.assets[0].uri);
+    }).catch((err) => {
+      //catch error in case photo was not selected
+      //console.log(err,'indecisive');
     });
   };
 

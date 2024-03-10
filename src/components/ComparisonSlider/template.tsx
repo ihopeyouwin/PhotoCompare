@@ -15,21 +15,18 @@ type Props = {
 
 const template = (props: Props): ReactJsx => {
   const { sliderValue, setSliderValue, imageBeforeSrc, imageAfterSrc, imageBefore, imageAfter } = props;
-  const fullWidth = Dimensions.get('window').width;
 
   return (
-    <View>
+    <View style={styles.root}>
       <View style={styles.imagesContainer}>
         <Image
-          style={[styles.imageLeft, { width: fullWidth }]}
           source={imageBefore ? { uri: imageBefore } : imageBeforeSrc}
+          style={[styles.image, styles.bottomImage]}
         />
-        <View style={[styles.overlayContainer, { width: fullWidth * (1 - sliderValue) }]}>
-          <Image
-            source={imageAfter ? { uri: imageAfter } : imageAfterSrc}
-            style={[styles.imageRight, { width: fullWidth }]}
-          />
-        </View>
+        <Image
+          source={imageAfter ? { uri: imageAfter } : imageAfterSrc}
+          style={[styles.image, styles.topImage, { opacity: 1 - sliderValue }]}
+        />
       </View>
       <Slider
         style={styles.slider}
